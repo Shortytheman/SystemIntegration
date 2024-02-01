@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "fast-xml-parser": "^4.3.4",
+    "js-yaml": "^4.1.0"
+  }
+}

@@ -4,21 +4,10 @@
     <age>34</age>
     <hobbies>
         <hobby>
-            Discgolf
+            discgolf
         </hobby>
         <hobby>
             mad
         </hobby>
     </hobbies>
 </me>
-
-<root>
-    <child>
-        <name>
-            Niklas
-        </name>
-        <subchild>
-
-        </subchild>
-    </child>
-</root>

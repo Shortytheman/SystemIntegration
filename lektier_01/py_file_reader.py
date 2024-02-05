@@ -10,11 +10,10 @@ class Person:
         self.hobbies = hobbies
 
     def __repr__(self):
-        return f"""Person(
-        name = {self.name},
+        return f""" Person name = {self.name},
         age = {self.age},
         hobbies = {self.hobbies}
-        )"""
+        """
 
 
 def read_from_csv(path):
@@ -27,7 +26,7 @@ def read_from_csv(path):
 
     return Person(name, age, hobbies)
         
-me_csv = read_from_csv("02._files\me.csv")
+me_csv = read_from_csv("02._files/me.csv")
 
 
 def read_from_json(path):
@@ -73,8 +72,8 @@ def read_from_yaml(path):
 
 me_yaml = read_from_yaml("02._files/me.yaml")
 
-#print(me_csv)
-#print(me_json)
-#print(me_txt)
-#print(me_xml)
-#print(me_yaml)
+print(me_csv)
+print(me_json)
+print(me_txt)
+print(me_xml)
+print(me_yaml)

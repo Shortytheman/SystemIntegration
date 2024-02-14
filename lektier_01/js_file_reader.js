@@ -13,7 +13,8 @@ class Person {
 }
 
 function readFromCSV(path) {
-    const lines = fs.readFileSync(path, 'utf-8').split('\n').map(line => line.trim().replace(/"/g, ''));
+    path = '../02._files/me.csv'
+    const lines = fs.readFileSync(path, 'utf-8').split('\n');
     const [name, age, ...hobbies] = lines[1].split(',');
     return new Person(name, age, hobbies);
 }
@@ -21,6 +22,7 @@ function readFromCSV(path) {
 const meCSV = readFromCSV('../02._files/me.csv');
 
 function readFromJSON(path) {
+    path = '../02._files/me.json'
     const data = JSON.parse(fs.readFileSync(path, 'utf-8'));
     const { name, age, hobbies } = data;
     return new Person(name, age, hobbies);
@@ -29,6 +31,7 @@ function readFromJSON(path) {
 const meJSON = readFromJSON('../02._files/me.json');
 
 function readFromTXT(path) {
+    path = '../02._files/me.txt'
     const lines = fs.readFileSync(path, 'utf-8').split('\n').map(line => line.trim());
     const name = lines[0].split(" ")[1];
     const age = lines[1].split(" ")[1];
@@ -39,6 +42,7 @@ function readFromTXT(path) {
 const meTXT = readFromTXT('../02._files/me.txt');
 
 function readFromXML(path) {
+    path = '../02._files/me.xml'
     const xmlData = fs.readFileSync(path, 'utf-8');
     const parser = new XMLParser();
     const parsedXML = parser.parse(xmlData, { ignoreAttributes: false, attributeNamePrefix : "" });
@@ -49,6 +53,7 @@ function readFromXML(path) {
 const meXML = readFromXML('../02._files/me.xml');
 
 function readFromYAML(path) {
+    path = '../02._files/me.yaml'
     const yamlData = fs.readFileSync(path, 'utf-8');
     const { name, age, hobbies } = yaml.load(yamlData);
     return new Person(name, age, hobbies);
@@ -62,3 +67,11 @@ console.log(meJSON)
 console.log(meTXT)
 console.log(meXML)
 console.log(meYAML)
+
+module.exports = {
+    readFromCSV,
+    readFromJSON,
+    readFromTXT,
+    readFromXML,
+    readFromYAML
+};

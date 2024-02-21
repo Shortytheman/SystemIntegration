@@ -1,41 +1,36 @@
-const express = require('express');
-const filereader = require("../lektier_01/js_file_reader");
-const app = express();
-const getRouter = express.Router()
+import express from "express";
+import { readFromXML, readFromYAML, readFromJSON, readFromTXT, readFromCSV } from "../lektier_01/js_file_reader.js";
 
-app.use("/get", getRouter)
+const router = express.Router();
 
-app.listen(3000)
-
-//Stringify før route -> JSON
-
-getRouter.get('/XML', (req, res) => {
-    const xmldata = filereader.readFromXML();
-    console.log("XML Data sent")
+router.get('/XML', (req, res) => {
+    const xmldata = readFromXML();
+    console.log("XML Data sent");
     res.send(xmldata);
 });
 
-getRouter.get('/YAML', (req, res) => {
-    const yamldata = filereader.readFromYAML();
-    console.log("YAML Data sent")
+router.get('/YAML', (req, res) => {
+    const yamldata = readFromYAML();
+    console.log("YAML Data sent");
     res.send(yamldata);
 });
 
-getRouter.get('/JSON', (req, res) => {
-    const jsondata = filereader.readFromJSON();
-    console.log("JSON Data sent")
+router.get('/JSON', (req, res) => {
+    const jsondata = readFromJSON();
+    console.log("JSON Data sent");
     res.send(jsondata);
 });
 
-getRouter.get('/TXT', (req, res) => {
-    const txtdata = filereader.readFromTXT();
-    console.log("TXT Data sent")
+router.get('/TXT', (req, res) => {
+    const txtdata = readFromTXT();
+    console.log("TXT Data sent");
     res.send(txtdata);
 });
 
-getRouter.get('/CSV', (req, res) => {
-    const csvData = filereader.readFromCSV()
-        console.log("CSV Data sent")
-        res.send(csvData);
+router.get('/CSV', (req, res) => {
+    const csvData = readFromCSV();
+    console.log("CSV Data sent");
+    res.send(csvData);
 });
 
+export default router;

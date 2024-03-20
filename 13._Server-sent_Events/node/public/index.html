@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Example</title>
+</head>
+<body>
+    <h1>SSE Example</h1>
+    <div id="time"></div>
+
+    <script>
+        const timeDiv = document.getElementById("time");
+
+        // Establish SSE connection
+        const eventSource = new EventSource("/synchronize-time");
+
+        // Event listener for receiving SSE messages
+        eventSource.onmessage = function(event) {
+            const time = event.data;
+            console.log('Received time:', time);
+            timeDiv.textContent = "Time:" + time;
+        };
+
+        // Event listener for connection errors
+        eventSource.onerror = function(err) {
+            console.error('Error establishing SSE connection:', err);
+        };
+    </script>
+</body>
+</html>

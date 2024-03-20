@@ -1,6 +1,7 @@
 #poetry init -n
 #poetry add fastapi uvicorn
 #poetry add requests
+#poetry shell
 #uvicorn main:app --reload
 
 from fastapi import FastAPI

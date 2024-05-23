@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Payment Integration</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto">
+        <h1 class="text-lg font-bold mb-4">Payment Form</h1>
+        <form id="payment-form">
+            <div id="card-element" class="p-4 bg-gray-200 rounded"></div>
+            <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Pay
+            </button>
+        </form>
+        <div id="card-errors" class="text-red-600 mt-2"></div>
+    </div>
+
+    <script>
+        async function loadStripe() {
+            const response = await fetch('/config');
+            const { publishableKey } = await response.json();
+            const stripe = Stripe(publishableKey);
+            const elements = stripe.elements();
+            const card = elements.create('card', {
+                style: {
+                    base: {
+                        color: "#32325d",
+                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                        fontSmoothing: "antialiased",
+                        fontSize: "16px",
+                        '::placeholder': {
+                            color: '#aab7c4'
+                        }
+                    },
+                    invalid: {
+                        color: "#fa755a",
+                        iconColor: "#fa755a"
+                    }
+                }
+            });
+            card.mount('#card-element');
+
+            const form = document.getElementById('payment-form');
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const response = await fetch('/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: 1000 })
+                });
+
+                const data = await response.json();
+                console.log('Client Secret received from server:', data.clientSecret);
+
+                const result = await stripe.confirmCardPayment(data.clientSecret, {
+                    payment_method: {
+                        card: card,
+                    },
+                });
+
+                if (result.error) {
+                    console.error(result.error.message);
+                    document.getElementById('card-errors').textContent = result.error.message;
+                } else {
+                    if (result.paymentIntent.status === 'succeeded') {
+                        console.log('Payment successful!');
+                        document.getElementById('card-errors').textContent = 'Payment successful!';
+                    }
+                }
+            });
+        }
+
+        loadStripe();
+    </script>
+</body>
+</html>

@@ -3,7 +3,10 @@ from fastapi.templating import Jinja2Templates #Minder og thymeleaf
 from fastapi.responses import StreamingResponse #Event-stream med "keep-alive"
 from datetime import datetime
 import asyncio
+import uvicorn
 
+
+#uvicorn main:app --reload --host 127.0.0.1 --port 8000
 
 app = FastAPI()
 
@@ -27,3 +30,6 @@ def sse():
 @app.get("/emil")
 def get_joke():
     return "Der var engang en..."
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)

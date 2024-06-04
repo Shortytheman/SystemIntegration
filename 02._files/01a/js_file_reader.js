@@ -12,26 +12,26 @@ class Person {
     }
 }
 
-function readFromCSV(path) {
-    path = '../../02._files/me.csv'
+function readFromCSV() {
+    const path = '../../me.csv'
     const lines = fs.readFileSync(path, 'utf-8').split('\n');
     const [name, age, ...hobbies] = lines[1].split(',');
     return new Person(name, parseInt(age), hobbies.map(hobby => hobby.replace(/"/g, '')));
 }
 
-const meCSV = readFromCSV('../02._files/me.csv');
+const meCSV = readFromCSV();
 
-function readFromJSON(path) {
-    path = '../../02._files/me.json'
+function readFromJSON() {
+    const path = '../../me.json'
     const data = JSON.parse(fs.readFileSync(path, 'utf-8'));
     const { name, age, hobbies } = data;
     return new Person(name, parseInt(age), hobbies);
 }
 
-const meJSON = readFromJSON('../02._files/me.json');
+const meJSON = readFromJSON();
 
-function readFromTXT(path) {
-    path = '../../02._files/me.txt'
+function readFromTXT() {
+    const path = '../../me.txt'
     const lines = fs.readFileSync(path, 'utf-8').split('\n').map(line => line.trim());
     const name = lines[0].split(" ")[1];
     const age = lines[1].split(" ")[1];
@@ -39,10 +39,10 @@ function readFromTXT(path) {
     return new Person(name, parseInt(age), hobbies);
 }
 
-const meTXT = readFromTXT('../02._files/me.txt');
+const meTXT = readFromTXT();
 
-function readFromXML(path) {
-    path = '../../02._files/me.xml'
+function readFromXML() {
+    const path = '../../me.xml'
     const xmlData = fs.readFileSync(path, 'utf-8');
     const parser = new XMLParser();
     const parsedXML = parser.parse(xmlData, { ignoreAttributes: false, attributeNamePrefix : "" });
@@ -50,16 +50,16 @@ function readFromXML(path) {
     return new Person(name, age, hobbies.hobby);
 }
 
-const meXML = readFromXML('../02._files/me.xml');
+const meXML = readFromXML();
 
-function readFromYAML(path) {
-    path = '../../02._files/me.yaml'
+function readFromYAML() {
+    const path = '../../me.yaml'
     const yamlData = fs.readFileSync(path, 'utf-8');
     const { name, age, hobbies } = yaml.load(yamlData);
     return new Person(name, age, hobbies);
 }
 
-const meYAML = readFromYAML('../02._files/me.yaml');
+const meYAML = readFromYAML();
 
 
 console.log(meCSV)

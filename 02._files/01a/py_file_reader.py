@@ -26,7 +26,7 @@ def read_from_csv(path):
 
     return Person(name, age, hobbies)
         
-me_csv = read_from_csv("02._files/me.csv")
+me_csv = read_from_csv("../me.csv")
 
 
 def read_from_json(path):
@@ -37,7 +37,7 @@ def read_from_json(path):
         hobbies = data.get("hobbies")
     return Person(name,age,hobbies)
 
-me_json = read_from_json("02._files/me.json")
+me_json = read_from_json("../me.json")
 
 
 def read_from_txt(path):
@@ -48,7 +48,7 @@ def read_from_txt(path):
         hobbies = lines[2].split(" ")[1:]
     return Person(name,age,hobbies)
 
-me_txt = read_from_txt("02._files/me.txt")
+me_txt = read_from_txt("../me.txt")
 
 
 def read_from_xml(path):
@@ -59,7 +59,7 @@ def read_from_xml(path):
     hobbies = [hobby.text.strip() for hobby in elements.find('hobbies').iter('hobby')]
     return Person(name,age,hobbies)
 
-me_xml = read_from_xml("02._files/me.xml")
+me_xml = read_from_xml("../me.xml")
 
 
 def read_from_yaml(path):
@@ -70,7 +70,7 @@ def read_from_yaml(path):
         hobbies = data.get("hobbies")
     return Person(name,age,hobbies)
 
-me_yaml = read_from_yaml("02._files/me.yaml")
+me_yaml = read_from_yaml("../me.yaml")
 
 print(me_csv)
 print(me_json)

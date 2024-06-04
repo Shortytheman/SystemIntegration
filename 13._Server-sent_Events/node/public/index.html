@@ -7,24 +7,24 @@
 </head>
 <body>
     <h1>SSE Example</h1>
-    <div id="time"></div>
+    <div id="joke"></div>
 
     <script>
-        const timeDiv = document.getElementById("time");
+        const jokeDiv = document.getElementById("joke");
 
         // Establish SSE connection
-        const eventSource = new EventSource("/synchronize-time");
+        const eventSource = new EventSource("/get-joke");
 
         // Event listener for receiving SSE messages
         eventSource.onmessage = function(event) {
-            const time = event.data;
-            console.log('Received time:', time);
-            timeDiv.textContent = "Time:" + time;
+            const joke = event.data;
+            console.log('Received joke:', joke);
+            jokeDiv.textContent = joke;
         };
 
-        // Event listener for connection errors
         eventSource.onerror = function(err) {
             console.error('Error establishing SSE connection:', err);
+            jokeDiv.textContent = 'Error establishing connection. Please try again later.';
         };
     </script>
 </body>

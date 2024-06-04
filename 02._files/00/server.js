@@ -1,5 +1,5 @@
 import express from "express";
-import { readFromXML, readFromYAML, readFromJSON, readFromTXT, readFromCSV } from "../lektier_01/js_file_reader.js";
+import { readFromXML, readFromYAML, readFromJSON, readFromTXT, readFromCSV } from "../01a/js_file_reader.js";
 
 const router = express.Router();
 

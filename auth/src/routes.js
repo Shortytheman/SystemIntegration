@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/welcome', (req, res) => {
   if (req.session.user) {
-    res.sendFile('welcome.html', { root: './views' });
+    res.sendFile('welcome.html', { root: '.././views' });
   } else {
     res.redirect('/login');
   }

@@ -1,5 +1,5 @@
 import express from "express"
-import userRouter from '../../lektier_02/server.js';
+import userRouter from '../../00/server.js';
 
 const app = express()   
 const PORT = 8080

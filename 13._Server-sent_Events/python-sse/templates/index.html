@@ -12,7 +12,7 @@
     <script>
         const dateDiv = document.getElementById("date");
 
-        const eventSource = new EventSource("/");
+        const eventSource = new EventSource("/emil");
 
         eventSource.onmessage = () => {
             dateDiv.textContent = event.data;

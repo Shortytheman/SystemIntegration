@@ -1,0 +1,1 @@
+### run "node app.js" from the root folder, and enter the static docs page: "http://localhost:3000/docs"

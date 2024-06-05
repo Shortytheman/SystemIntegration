@@ -40,6 +40,7 @@ In your index.js file in the src folder, replace the code with the code:
 
 ____________________________________________________________
 
+```javascript
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Auth0Provider } from '@auth0/auth0-react';
@@ -59,6 +60,7 @@ root.render(
   </Auth0Provider>,
 );
 
+```
 ____________________________________________________________
 
 # Add login button
@@ -68,6 +70,7 @@ In the "components" folder add a file called "Loginbutton.js" and add the follow
 
 ____________________________________________________________
 
+```javascript
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -78,7 +81,7 @@ const LoginButton = () => {
 };
 
 export default LoginButton;
-
+```
 ____________________________________________________________
 
 
@@ -88,6 +91,7 @@ In the "components" folder add a file called "Logoutbutton.js" and add the follo
 
 ____________________________________________________________
 
+```javascript
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -102,7 +106,7 @@ const LogoutButton = () => {
 };
 
 export default LogoutButton;
-
+```
 ____________________________________________________________
 
 
@@ -112,6 +116,7 @@ In the "components" folder add a file called "Profile.js" and add the following 
 
 ____________________________________________________________
 
+```javascript
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -134,7 +139,7 @@ const Profile = () => {
 };
 
 export default Profile;
-
+```
 ____________________________________________________________
 
 

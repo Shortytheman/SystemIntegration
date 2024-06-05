@@ -9,6 +9,10 @@ When prompted with the option about the app type, choose "Single Page Applicatio
 # Setting up with React
 Click on the "React" Icon, and a react application will be initiated for you and a guide will open. It is recommended and assumed that you will do this to follow the rest of the guide.
 
+## Installing react globally
+
+run "npm install -g create-react-app" from a terminal
+
 
 ## Get Your Application Keys
 

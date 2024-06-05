@@ -1,0 +1,2 @@
+Declined card = 1234 5678 9123 4567 (Any MM/YY/CVC/ZIP)
+Successful card = 4242 4242 4242 4242 (Any CVC/ZIP and a date later than today MM/YY)

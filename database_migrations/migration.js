@@ -29,10 +29,8 @@ async function migrate() {
   await pgClient.connect();
 
   try {
-    // Fetch data from MySQL
     const [rows, fields] = await mysqlConnection.execute(`SELECT * FROM ${table}`);
 
-    // Optional: Create the table in PostgreSQL if it doesn't exist
     await pgClient.query(`
       CREATE TABLE IF NOT EXISTS ${table} (
         team_id INT PRIMARY KEY,
@@ -42,7 +40,6 @@ async function migrate() {
       )
     `);
 
-    // Insert data into PostgreSQL
     for (const row of rows) {
       await pgClient.query(
         `INSERT INTO ${table} (team_id, ${column1}, ${column2}, ${column3}) VALUES ($1, $2, $3, $4)`,
@@ -60,3 +57,12 @@ async function migrate() {
 }
 
 migrate();
+
+
+/*
+
+psql -h localhost -U root -d hiveplanner  | Enter the postgres database instance with root user (password = password)
+\d teams | Describe the teams table
+SELECT * FROM teams; | Get all entries from the teams table
+
+*/

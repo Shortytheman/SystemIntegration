@@ -4,22 +4,17 @@ Amount: 69
 Timestamp: 2024-03-20T18:14:28.323Z
 
 Event type: Payment registered
-Callback URL: sko
-Amount: 76
-Timestamp: 2024-03-20T18:14:35.407Z
+Callback URL: shirt
+Amount: 750
+Timestamp: 2024-06-04T19:58:04.514Z
 
-Event type: payment registered
-Callback URL: sko
-Amount: 76
-Timestamp: 2024-03-20T18:37:28.262Z
+Event type: Payment registered
+Callback URL: shirt2
+Amount: 7505
+Timestamp: 2024-06-05T15:19:30.306Z
 
-Event type: payment registered
-Callback URL: sko
-Amount: 76
-Timestamp: 2024-03-20T18:37:28.836Z
-
-Event type: payment registered
-Callback URL: sko
-Amount: 76
-Timestamp: 2024-03-20T18:37:29.559Z
+Event type: Payment registered
+Callback URL: http://localhost:8000/webhook
+Amount: 7505
+Timestamp: 2024-06-05T15:21:14.346Z
 

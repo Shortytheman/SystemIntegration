@@ -23,8 +23,11 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.delete("/unregister/:callbackUrl", async (req, res) => {
-  const { callbackUrl } = req.params;
+app.delete("/unregister", async (req, res) => {
+  const { callbackUrl } = req.body;
+  if (!callbackUrl) {
+    return res.status(400).send("callbackUrl is required");
+  }
   try {
     await deleteCallbackUrlFromFile(filePath, callbackUrl);
     console.log("Callback URL deleted successfully.");
@@ -45,6 +48,7 @@ app.get("/ping", async (req, res) => {
       res.sendStatus(500);
     }
   });
+
 
 async function appendToFile(filePath, data) {
   return new Promise((resolve, reject) => {
@@ -93,5 +97,5 @@ async function readWebhooksFromFile(filePath) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

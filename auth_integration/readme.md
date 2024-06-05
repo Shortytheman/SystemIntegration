@@ -143,4 +143,4 @@ export default Profile;
 ____________________________________________________________
 
 
-# Now from the root of the application (cd onto <your_application_name>) and run "npm start"
+### Now from the root of the application (cd into <your_application_name>) and run "npm start" from the terminal
